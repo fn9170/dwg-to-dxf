@@ -5,6 +5,19 @@ RUN apt-get update && apt-get install -y \
     python3 python3-pip libfuse2 && \
     pip3 install flask
 
+RUN apt-get update && apt-get install -y \
+    libfuse2 \
+    libgl1 \
+    libxrender1 \
+    libxext6 \
+    libx11-6 \
+    libxcb1 \
+    libxkbcommon-x11-0 \
+    libxcb-util1 \
+    libglu1-mesa \
+    && rm -rf /var/lib/apt/lists/*
+
+
 # 复制代码和 AppImage
 WORKDIR /app
 COPY app.py .
